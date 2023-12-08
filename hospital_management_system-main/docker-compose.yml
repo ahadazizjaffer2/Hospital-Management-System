@@ -1,0 +1,49 @@
+version: "3.4"
+
+services:
+  hms_db:
+    container_name: hms_db
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data1:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: main_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+  phpmyadmin:
+    container_name: hms_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8081:80
+    links: 
+      - hms_db
+    environment:
+      PMA_HOST: hms_db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+
+  hospital_management_system:
+    container_name: hospital_management_system
+    build: 
+      context: .
+    environment:
+      DB_SCHEMA: main_db
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_HOST: hms_db
+    ports:
+      - "3000:3000"
+    links:
+      - hms_db
+    depends_on:
+      - hms_db
+
+      
+volumes:
+  mysql_data1:
+  pgadmin_data:

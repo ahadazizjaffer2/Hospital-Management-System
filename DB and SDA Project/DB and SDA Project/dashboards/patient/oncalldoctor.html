@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | Patient</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Add styles for better spacing */
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      /* Adjust as needed */
+    }
+
+    th,
+    td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <div class="logo_name">LifeCare Hospital
+      </div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="dashboard.html">
+          <i class="bx bx-grid-alt"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="newappointment.html">
+          <i class='bx bxs-calendar-edit'></i>
+          <span class="links_name">Get Appointment</span>
+        </a>
+        <span class="tooltip">Get Appointment</span>
+      </li>
+      <li>
+        <a href="pastapointments.html">
+          <i class='bx bxs-calendar-check' ></i>
+          <span class="links_name">Past Appointments</span>
+        </a>
+        <span class="tooltip">Past Appointments</span>
+      </li>
+      <li>
+        <a href="alldoctors.html">
+          <i class="bx bx-search-alt-2"></i>
+          <span class="links_name">Search Doctors</span>
+        </a>
+        <span class="tooltip">Search Doctors</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-phone-call'></i>
+          <span class="links_name">On Call Doctor</span>
+        </a>
+        <span class="tooltip">On Call Doctor</span>
+      </li>
+      
+      <li class="profile">
+        <a href="../../org website/accounts.html">
+          <i class="bx bx-log-out"></i>
+          <span class="links_name">Log Out</span>
+        </a>
+        <span class="tooltip">Log Out</span>
+      </li>
+    </ul>
+  </div>
+
+      <section class="home-section">
+    <div class="text">Dashboard</div>
+
+    <!-- Table for displaying doctor information -->
+    <table id="doctorsTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Distance</th>
+          <th>Contact Number</th>
+          <th>Doctor's Latitude</th>
+          <th>Doctor's Longitude</th>
+          <th>Patient's Latitude</th>
+          <th>Patient's Longitude</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Doctor data will be dynamically added here -->
+      </tbody>
+    </table>
+  </section>
+
+  <script src="script.js"></script>
+  <!-- ... (previous HTML code) ... -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Request for the patient's location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+
+    // Sample data (replace with actual data from your server)
+    const doctorsData = [
+      {
+        name: "Dr. Abdul Ahad",
+        latitude: 24.8607,
+        longitude: 67.0011,
+      },
+      {
+        name: "Dr. Abdul Ahad Nauman",
+        latitude: 24.9180,
+        longitude: 67.0971,
+      },
+      // Add more doctor data as needed
+    ];
+
+    // Hardcoded contact numbers
+    const contactNumbers = ["+92123456789", "+92987654321"];
+
+    // Function to calculate distance between two points using Haversine formula
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Radius of the Earth in kilometers
+      const dLat = (lat2 - lat1) * (Math.PI / 180);
+      const dLon = (lon2 - lon1) * (Math.PI / 180);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const distance = R * c; // Distance in kilometers
+      return distance;
+    }
+
+    // Function to populate the table with doctor information
+    function populateDoctorsTable(doctors, contactNumbers, patientLatitude, patientLongitude) {
+      const tableBody = document.querySelector("#doctorsTable tbody");
+
+      doctors.forEach((doctor, index) => {
+        const distance = calculateDistance(patientLatitude, patientLongitude, doctor.latitude, doctor.longitude);
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${doctor.name}</td>
+          <td>${distance.toFixed(2)} km</td>
+          <td>${contactNumbers[index]}</td>
+          <td>${doctor.latitude}</td>
+          <td>${doctor.longitude}</td>
+          <td>${patientLatitude}</td>
+          <td>${patientLongitude}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Callback function for successful location retrieval
+    function onLocationSuccess(position) {
+      const patientLatitude = position.coords.latitude;
+      const patientLongitude = position.coords.longitude;
+
+      // Call the function to populate the table with the sample data and patient's location
+      populateDoctorsTable(doctorsData, contactNumbers, patientLatitude, patientLongitude);
+    }
+
+    // Callback function for location retrieval error
+    function onLocationError(error) {
+      console.error(`Error getting location: ${error.message}`);
+      // If there's an error, populate the table without patient's location
+      populateDoctorsTable(doctorsData, contactNumbers, 0, 0); // You can choose default coordinates or handle it differently
+    }
+  });
+</script>
+
+</body>
+
+</html>

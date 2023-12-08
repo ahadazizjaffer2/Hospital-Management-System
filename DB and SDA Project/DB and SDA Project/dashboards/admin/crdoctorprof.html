@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Doctor Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  /* Add the following CSS to your existing style.css file or create a new one */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-section {
+  margin-left: 0px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.logo-details {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.logo_name {
+  font-size: 1.5em;
+}
+
+/* Add this CSS to your existing style.css file or create a new one */
+
+#doctorProfileForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+}
+
+#doctorProfileForm label {
+  margin-bottom: 8px;
+}
+
+#doctorProfileForm input,
+#doctorProfileForm textarea {
+  padding: 8px;
+  margin-bottom: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#doctorProfileForm button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#doctorProfileForm button:hover {
+  background-color: #45a049;
+}
+
+
+</style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">LifeCare Hospital
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="dashboard.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>         
+        <li>
+          <a href="crdoctorschedule.html">
+            <i class='bx bxs-calendar-edit'></i>
+            <span class="links_name">Create Doctor Schedule</span>
+          </a>
+          <span class="tooltip">Create Doctor Schedule</span>
+        </li>
+        <li>
+          <a href="viewpayments.html">
+            <i class='bx bx-money'></i>
+            <span class="links_name">View All Payments</span>
+          </a>
+          <span class="tooltip">View All Payments</span>
+        </li>
+        <li>
+          <a href="updatepaymentstat.html">
+            <i class='bx bx-dollar-circle'></i>
+            <span class="links_name">Update Payment Status</span>
+          </a>
+          <span class="tooltip">Update Payment Status</span>
+        </li>
+        <li>
+          <a href="crdoctorlocation.html">
+            <i class='bx bx-current-location'></i>
+            <span class="links_name">Create Doctor Location</span>
+          </a>
+          <span class="tooltip">Create Doctor Location</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-user-plus'></i>
+            <span class="links_name">Create Doctor Profile</span>
+          </a>
+          <span class="tooltip">Create Doctor Profile</span>
+        </li>
+        <li>
+          <a href="deldoctorprof.html">
+            <i class='bx bxs-user-x' ></i>
+            <span class="links_name">Delete Doctor Profile</span>
+          </a>
+          <span class="tooltip">Delete Doctor Profile</span>
+        </li>
+        
+        <li class="profile">
+          <a href="../../org website/accounts.html">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log Out</span>
+          </a>
+          <span class="tooltip">Log Out</span>
+        </li>
+      </ul>
+    </div>
+
+    </div>
+<section class="home-section">
+  <div class="text">Create Doctor Profile</div>
+  <form id="doctorProfileForm">
+    <label for="doctorFirstName">First Name:</label>
+    <input type="text" id="doctorFirstName" name="doctorFirstName" required>
+    <br>
+    <label for="doctorLastName">Last Name:</label>
+    <input type="text" id="doctorLastName" name="doctorLastName" required>
+    <br>
+    <label for="doctorSpecialty"> Specialty :</label>
+    <input type="text" id="doctorSpecialty" name="doctorSpecialty" required>
+    <br>
+    <label for="doctorEmail">Email:</label>
+    <input type="email" id="doctorEmail" name="doctorEmail" required>
+    <br>
+    <label for="doctorPassword">Password:</label>
+    <input type="password" id="doctorPassword" name="doctorPassword" required>
+    <br>
+    <label for="doctorExperience">Experience:</label>
+    <input type="text" id="doctorExperience" name="doctorExperience" required>
+    <br>
+    <label for="doctorFee">Fee:</label>
+    <input type="text" id="doctorFee" name="doctorFee" required>
+    <br>
+    <label for="doctorDescription">Description:</label>
+    <input type="text" id="doctorDescription" name="doctorDescription" required>
+    <br>
+    <button type="button" onclick="createDoctorProfile()">Create Profile</button>
+  </form>
+</section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

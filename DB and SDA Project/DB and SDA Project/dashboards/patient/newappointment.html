@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Patient</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      .home-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      .appointment-form {
+        max-width: 900px;
+        width: 100%;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">LifeCare Hospital</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="dashboard.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-calendar-edit'></i>
+            <span class="links_name">Get Appointment</span>
+          </a>
+          <span class="tooltip">Get Appointment</span>
+        </li>
+        <li>
+          <a href="pastapointments.html">
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="links_name">Past Appointments</span>
+          </a>
+          <span class="tooltip">Past Appointments</span>
+        </li>
+        <li>
+          <a href="alldoctors.html">
+            <i class="bx bx-search-alt-2"></i>
+            <span class="links_name">Search Doctors</span>
+          </a>
+          <span class="tooltip">Search Doctors</span>
+        </li>
+        <li>
+          <a href="oncalldoctor.html">
+            <i class='bx bx-phone-call'></i>
+            <span class="links_name">On Call Doctor</span>
+          </a>
+          <span class="tooltip">On Call Doctor</span>
+        </li>
+        
+        <li class="profile">
+          <a href="../../org website/accounts.html">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log Out</span>
+          </a>
+          <span class="tooltip">Log Out</span>
+        </li>
+      </ul>
+    </div>
+
+    <section class="home-section">
+      <div class="appointment-form">
+        <h2>Get a New Appointment</h2>
+        <form id="appointmentForm">
+          <div class="form-group">
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor" required>
+              <option value="cardiac specialization">Cardiologist</option>
+              <option value="Dermatologist">Dermatologist</option>
+              <option value="SpinalCord specialization">SpinalCord Specialist</option>
+              <option value="Orthopedic specialization">Orthopedic specialist</option>
+              <option value="Genenal Physician">Genenal Physician</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="day">Select Day:</label>
+            <select id="day" name="day" required>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+
+          <button id="showSpecializedDoctorsBtn" type="button">Show Doctors</button>
+          <br>
+
+          <div id="doctorList"></div>
+          
+          <div class="form-group">
+
+            <label for="time">Select Time (24-Hour Format):</label>
+              <select id="time" name="time" required>
+                <!-- Generate options for hours from 8 to 22 using JavaScript -->
+                <script>
+                  for (let hour = 8; hour <= 22; hour++) {
+                    const formattedHour = hour.toString().padStart(2, '0'); // Ensure two digits (e.g., 08, 09)
+                    document.write(`<option value='${formattedHour}:00'>${formattedHour}:00</option>`);
+                  }
+                </script>
+              </select>
+          </div>
+          <br>
+
+          <button id="CreateappointmentBtn" type="button">Submit Appointment</button>
+          
+          <!-- Removed extra line -->
+        </form>
+      </div>
+    </section>
+
+    <script src="script.js"></script> 
+
+  </body>
+</html>

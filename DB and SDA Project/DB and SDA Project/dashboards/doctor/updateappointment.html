@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Doctor</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .home-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .text {
+      font-size: 2em;
+      color: #333; /* Adjust text color */
+    }
+
+    .text span {
+      font-weight: normal;
+      color: #555; /* Adjust text color */
+    }
+  </style>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">LifeCare Hospital</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="dashboard.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <span class="tooltip">User</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-calendar-edit'></i>
+            <span class="links_name">Update Appointment</span>
+          </a>
+          <span class="tooltip">Update Appointment</span>
+        </li>
+        <li>
+          <a href="schedule.html">
+            <i class='bx bx-task'></i>
+            <span class="links_name">Schedule</span>
+          </a>
+          <span class="tooltip">Schedule</span>
+        </li>
+        
+        <li class="profile">
+          <a href="../../org website/accounts.html">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log Out</span>
+          </a>
+          <span class="tooltip">Log Out</span>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <h1>Update Appointments</h1>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+      
+
+    document.querySelector('.logout').addEventListener('click', function () {
+    // Clear all items in localStorage
+      localStorage.clear();
+    });
+    
+    </script> 
+    <script src="script.js"></script>
+  </body>
+</html>

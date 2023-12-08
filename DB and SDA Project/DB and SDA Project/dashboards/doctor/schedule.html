@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Patient</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      .home-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .text {
+        font-size: 2em;
+        color: #333; /* Adjust text color */
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">LifeCare Hospital</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="dashboard.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <span class="tooltip">User</span>
+        </li>
+        <li>
+          <a href="updateappointment.html">
+            <i class='bx bxs-calendar-edit'></i>
+            <span class="links_name">Update Appointment</span>
+          </a>
+          <span class="tooltip">Update Appointment</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-task'></i>
+            <span class="links_name">Schedule</span>
+          </a>
+          <span class="tooltip">Schedule</span>
+        </li>
+        
+        <li class="profile">
+          <a href="../../org website/accounts.html">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log Out</span>
+          </a>
+          <span class="tooltip">Log Out</span>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="text">
+        
+      <h2>Doctor's Schedule</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Doctor ID</th>
+            <th>Day Assigned</th>
+            <th>Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DOC123</td>
+            <td>Monday</td>
+            <td>8Am-10Pm</td>
+          </tr>
+          <tr>
+            <td>DOC456</td>
+            <td>Thursday</td>
+            <td>8Am-10pm</td>
+          </tr>
+
+          <tr>
+            <td>DOC456</td>
+            <td>Thursday</td>
+            <td>8Am-10pm</td>
+          </tr>
+
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+      // Retrieve data from localStorage
+      const doctorFullName = localStorage.getItem('DoctorFullName');
+      const doctorSpecialty = localStorage.getItem('DoctorSpecialty');
+      const doctorEmail = localStorage.getItem('DoctorEmail');
+      const doctorDateJoined = localStorage.getItem('DoctorDateJoined');
+      const doctorID = localStorage.getItem('DoctorID');
+
+      document.getElementById('doctorFullName').innerText = doctorFullName;
+      document.getElementById('doctorSpecialty').innerText = doctorSpecialty;
+      document.getElementById('doctorEmail').innerText = doctorEmail;
+
+      // Calculate and display experience
+      const joiningDate = new Date(doctorDateJoined);
+      const currentDate = new Date();
+      const experienceInYears = currentDate.getFullYear() - joiningDate.getFullYear();
+      document.getElementById('doctorExperience').innerText = `${experienceInYears} years`;
+
+      document.getElementById('doctorID').innerText = doctorID;
+
+    </script>  
+     </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Patient</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">LifeCare Hospital
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="#">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="newappointment.html">
+            <i class='bx bxs-calendar-edit'></i>
+            <span class="links_name">Get Appointment</span>
+          </a>
+          <span class="tooltip">Get Appointment</span>
+        </li>
+        <li>
+          <a href="pastapointments.html">
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="links_name">Past Appointments</span>
+          </a>
+          <span class="tooltip">Past Appointments</span>
+        </li>
+        <li>
+          <a href="alldoctors.html">
+            <i class="bx bx-search-alt-2"></i>
+            <span class="links_name">Search Doctors</span>
+          </a>
+          <span class="tooltip">Search Doctors</span>
+        </li>
+        <li>
+          <a href="oncalldoctor.html">
+            <i class='bx bx-phone-call'></i>
+            <span class="links_name">On Call Doctor</span>
+          </a>
+          <span class="tooltip">On Call Doctor</span>
+        </li>
+        
+        <li class="profile">
+          <a href="../../org website/accounts.html">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log Out</span>
+          </a>
+          <span class="tooltip">Log Out</span>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="text">
+        <h1>Welcome, <span id="patientName"></span>!</h1>
+        <p>Email: <span id="patientEmail"></span></p>
+        <p>Blood Group: <span id="bloodGroup"></span></p>
+        <p>Age: <span id="patientAge"></span></p>
+        <p>Gender: <span id="patientGender"></span></p>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+      // Retrieve data from localStorage
+      const firstName = localStorage.getItem('FirstName');
+      const lastName = localStorage.getItem('LastName');
+      const email = localStorage.getItem('Email');
+      const bloodGroup = localStorage.getItem('BloodGroup');
+      const age = localStorage.getItem('Age');
+      const gender = localStorage.getItem('Gender');
+
+      // Display data in the HTML
+      document.getElementById('patientName').innerText = `${firstName} ${lastName}`;
+      document.getElementById('patientEmail').innerText = email;
+      document.getElementById('bloodGroup').innerText = bloodGroup;
+      document.getElementById('patientAge').innerText = age;
+      document.getElementById('patientGender').innerText = gender;
+    </script>
+  </body>
+</html>

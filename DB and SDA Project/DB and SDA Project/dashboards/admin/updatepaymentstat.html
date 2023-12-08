@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Admin</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .home-section {
+        padding: 20px;
+      }
+
+      #adminDetails {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #adminDetails p {
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      #payments {
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      strong {
+        color: #333;
+      }
+
+      span {
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <!-- Your sidebar content here -->
+      <div class="logo-details">
+        <div class="logo_name">LifeCare Hospital
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="dashboard.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+      <li>
+        <a href="crdoctorschedule.html">
+          <i class='bx bxs-calendar-edit'></i>
+          <span class="links_name">Create Doctor Schedule</span>
+        </a>
+        <span class="tooltip">Create Doctor Schedule</span>
+      </li>
+      <li>
+        <a href="viewpayments.html">
+          <i class='bx bx-money'></i>
+          <span class="links_name">View All Payments</span>
+        </a>
+        <span class="tooltip">View All Payments</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-dollar-circle'></i>
+          <span class="links_name">Update Payment Status</span>
+        </a>
+        <span class="tooltip">Update Payment Status</span>
+      </li>
+      <li>
+        <a href="crdoctorlocation.html">
+          <i class='bx bx-current-location'></i>
+          <span class="links_name">Create Doctor Location</span>
+        </a>
+        <span class="tooltip">Create Doctor Location</span>
+      </li>
+      <li>
+        <a href="crdoctorprof.html">
+          <i class='bx bxs-user-plus'></i>
+          <span class="links_name">Create Doctor Profile</span>
+        </a>
+        <span class="tooltip">Create Doctor Profile</span>
+      </li>
+      <li>
+        <a href="deldoctorprof.html">
+          <i class='bx bxs-user-x' ></i>
+          <span class="links_name">Delete Doctor Profile</span>
+        </a>
+        <span class="tooltip">Delete Doctor Profile</span>
+      </li>
+      
+      <li class="profile">
+        <a href="../../org website/accounts.html">
+          <i class="bx bx-log-out"></i>
+          <span class="links_name">Log Out</span>
+        </a>
+        <span class="tooltip">Log Out</span>
+      </li>
+    </ul>
+  </div>
+    <section class="home-section">
+      <div class="text">Dashboard</div>
+      <div id="adminDetails">
+        <p><strong>First Name:</strong> <span id="firstName"></span></p>
+        <p><strong>Last Name:</strong> <span id="lastName"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+      </div>
+
+      <div id="payments">
+        <h2>Payments</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Payment ID</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="paymentsTableBody">
+            <!-- Payments will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch admin information from the API
+        fetch("your_api_endpoint_for_admin")
+          .then((response) => response.json())
+          .then((adminData) => {
+            const adminDetailsContainer = document.getElementById("adminDetails");
+            adminDetailsContainer.querySelector("#firstName").innerText = adminData.firstName;
+            adminDetailsContainer.querySelector("#lastName").innerText = adminData.lastName;
+            adminDetailsContainer.querySelector("#email").innerText = adminData.email;
+          })
+          .catch((error) => console.error("Error fetching admin information:", error));
+
+        // Fetch all payments from the API
+        fetch("your_api_endpoint_for_payments")
+          .then((response) => response.json())
+          .then((payments) => {
+            const paymentsTableBody = document.getElementById("paymentsTableBody");
+            paymentsTableBody.innerHTML = ""; // Clear previous content
+
+            payments.forEach((payment) => {
+              paymentsTableBody.innerHTML += `
+                <tr>
+                  <td>${payment.paymentId}</td>
+                  <td>${payment.amount}</td>
+                  <td>${payment.date}</td>
+                  <!-- Add more table cells as needed -->
+                </tr>
+              `;
+            });
+          })
+          .catch((error) => console.error("Error fetching payments:", error));
+      });
+    </script>
+  </body>
+</html>

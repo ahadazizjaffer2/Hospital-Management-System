@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="accounts style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  </head>
+  <body>
+    
+	<div class="top" >
+		<div>
+        <b>
+        Location:<a style="color: white;" href="https://www.google.com/maps/place/Gulshan-e-Iqbal,+Karachi,+Karachi+City,+Sindh,+Pakistan/@24.9211514,67.0134637,13z/data=!3m1!4b1!4m6!3m5!1s0x3eb338b808bfd6b1:0x997b1a02c2570822!8m2!3d24.9180271!4d67.0970916!16zL20vMDluX2I4?entry=ttu">Gulshan-e-Iqbal,Karachi</a>    
+        Email:<a style="color: white;" href="https://mail.google.com/">lchih@hospital.pk</a>
+		Contact:<a style="color: white;" href="https://web.whatsapp.com/">111-1234567</a>
+  		</b>    
+    </div>
+	</div>
+	
+	<div class="logo">
+		<div>
+			<table>
+				<tr>
+                    <td width="800px">
+						<img src="Layer@2x(1).svg" width="1000px">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<nav>
+		<div class="navbar">
+			
+		  	<div class="nav-links">
+				
+				<ul class="links" style="padding-left: 0px;">
+					<li><a href="home.html" style="margin-bottom: 10px;">HOME</a></li>
+					<li><a href="aboutus.html" style="margin-bottom: 10px;">ABOUT US</a></li>
+					<li><a href="servicesoffered.html" style="margin-bottom: 10px;">SERVICES</a></li>
+					<li><a href="doctorsavailable.html" style="margin-bottom: 10px;">DOCTORS </a></li>
+					<li><a href="contactus.html" style="margin-bottom: 10px;">CONTACT US</a></li>
+					<li><a href="accounts.html" style="margin-bottom: 10px;">ACCOUNTS</a></li>
+				</ul>
+		  	</div>
+		</div>
+	</nav>
+   
+    <!-- Home -->
+    <section class="home">
+
+      <div class="button_inbetween">
+
+        <button class="button" id="form-open-1" onclick="showForm('login-form-1')">PATIENT</button>
+        <button class="button" id="form-open-2" onclick="showForm('login-form-2')">DOCTOR</button>
+        <button class="button" id="form-open-3" onclick="showForm('login-form-3')">ADMIN</button>
+
+
+      </div>
+      <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+        
+        <!-- Login From 1-->
+        <div class="form login_form" id="login-form-1">
+          <form action="#">
+            <h2>Patient Login</h2>
+
+            <div class="input_box">
+              <input type="email" name="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+
+            <button id="loginbtn1" class="button">Login Now</button>
+
+            <div class="login_signup">Don't have an account? <a href="#" id="newsignup">Signup</a></div>
+          </form>
+        </div>
+
+        <!-- Signup From 1-->
+        <div class="form signup_form" id="signup-form-1">
+          <form action="#">
+            <h2>Patient Signup</h2>
+            <div class="column">
+              <div class="input_box">
+                <i class="uil uil-font"></i>
+                <input type="text" name="firstName" placeholder="Enter your First Name" required />
+              </div>
+              <div class="input_box">
+                <i class="uil uil-font"></i>
+                <input type="text" name="lastName" placeholder="Enter your Last Name" required />
+              </div>
+            </div>
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Create password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Confirm password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="column">
+              <div class="input_box">
+                <i class="uil uil-tear"></i>
+                <input type="text" name="bloodGroup" placeholder="Enter your Blood Group" required />
+              </div>
+                <div class="dropdown">
+                  <i style="margin:0;font-size: 25px;"  class="uil uil-mars"></i>
+                  <label style="margin-left:7px;margin-bottom: 0px;">Gender:</label>
+                  <select style="margin-bottom: 0px;padding:5px;" name="genders">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                  </select>
+                </div>
+                <div class="input_box">
+                  <i class="uil uil-10-plus"></i>
+                  <input type="text" name="age" placeholder="Enter your Age" required />
+                </div>
+                
+            </div>
+            
+
+            <button class="button" id="signupsubmit">Signup Now</button>
+
+            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+          </form>
+        </div>
+
+        <!-- Login From 2-->
+        <div class="form login_form" id="login-form-2">
+          <form action="#">
+            <h2>Doctor Login</h2>
+
+            <div class="input_box">
+              <input type="email" name="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+
+            <button id="loginbtn2" class="button">Login Now</button>
+
+          </form>
+        </div>
+
+        <!-- Login From 3-->
+        <div class="form login_form" id="login-form-3">
+          <form action="#">
+            <h2>Admin Login</h2>
+
+            <div class="input_box">
+              <input type="email" name="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+
+            <button id="loginbtn3" class="button">Login Now</button>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+    <div class="nav_down">
+		<div>
+		 &copy; LifeCare International Hospital, site designed & developed by three group members 
+		 	<ol> 
+				<li>Ahad Aziz (21K-3241)</li> 
+				<li>Abdul Ahad Nauman (21K-4618)</li>
+				<li>Muhammad Murtuza (21K-4514)</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<script src="script.js"></script>
+	
+</body>
+</html>
